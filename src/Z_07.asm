@@ -4625,27 +4625,10 @@ MakeSwordShot:
 
     ; If [0529] is set, go activate a sword shot regardless of hearts.
     ;
-    ; UNKNOWN: But I haven't found any code that sets it.
+    ; When it's clear, still allow the shot so taking damage
+    ; doesn't disable sword beams.
     LDA ForceSwordShot
     BNE @SetUp
-
-    ; If full hearts <> (heart containers - 1), return.
-    LDA HeartValues
-    PHA
-    AND #$0F
-    STA $00
-    PLA
-    LSR
-    LSR
-    LSR
-    LSR
-    CMP $00
-    BNE L1F854_Exit
-
-    ; If partial heart is less than half full, return.
-    LDA HeartPartial
-    CMP #$80
-    BCC L1F854_Exit
 
 @SetUp:
     LDA #$01                    ; Sword shot sound effect

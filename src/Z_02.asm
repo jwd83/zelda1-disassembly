@@ -1664,9 +1664,9 @@ UpdateModeERegister:
 
     ; The save slot is not active.
     ;
-    ; Initialize file B hearts value to 3 heart containers and 2 hearts.
+    ; Initialize file B hearts value for 6 full heart containers.
     LDY #$18
-    LDA #$22
+    LDA #$55
     STA ($C0), Y
     INY                         ; Initialize file B heart partial to full.
     LDA #$FF
@@ -4060,8 +4060,8 @@ SwitchProfileToSecondQuest:
     DEY
     BPL :-
 
-    ; Set 3 full hearts and heart containers.
-    LDA #$22
+    ; Set 6 full hearts and heart containers.
+    LDA #$55
     STA HeartValues
     DEC HeartPartial
     LDA #$08
